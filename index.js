@@ -1,4 +1,1 @@
-import "dotenv/config"
-import { createPool } from 'mysql2/promise'
-
-const conn = createPool()
+import * as db from "./src/services/pizzas-services.js"

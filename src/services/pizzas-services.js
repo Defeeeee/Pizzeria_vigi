@@ -1,7 +1,7 @@
 import {config} from "../../dbconfig.js"
-import {createConnection} from "mysql2/promise"
+import {createPool} from "mysql2/promise"
 
-const connection  = createConnection(config)
+const connection  = createPool(config)
 
 export async function getAll() {
     const [rows, _] = await connection.query('SELECT * FROM Pizza')
@@ -24,5 +24,10 @@ export async function insert(pizza) {
 
 export async function update(pizza) {
     const [result, _] = await connection.query('UPDATE Pizza SET nombre = ?, libreGluten = ?, importe = ?, descripcion = ? WHERE id = ?', [pizza.nombre, pizza.libreGluten, pizza.importe, pizza.descripcion, pizza.id])
+    return result
+}
+
+export async function deleteById(id) {
+    const [result, _] = await connection.query('DELETE FROM Pizza WHERE id = ?', [id])
     return result
 }
