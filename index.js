@@ -4,7 +4,7 @@ import Pizza from "./src/models/pizza.js";
 import express from 'express';
 
 const app = express();
-const port = 80;
+const port = 1023;
 
 app.use(express.json());
 
