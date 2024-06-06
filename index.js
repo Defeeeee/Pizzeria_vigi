@@ -3,17 +3,10 @@ import Pizza from "./src/models/pizza.js";
 
 import express from 'express';
 
-import fs from 'fs';
-import https from 'https';
-
 const app = express();
-const port = 443;
+const port = 80;
 
 app.use(express.json());
-var options = {
-    key: fs.readFileSync('/etc/letsencrypt/live/germand.tplinkdns.com/privkey.pem'),
-    cert: fs.readFileSync('/etc/letsencrypt/live/germand.tplinkdns.com/fullchain.pem')
-}
 
 app.get('/pizzas', async (req, res) => {
     const pizzas = await db.getAll();
@@ -30,6 +23,6 @@ app.get('/pizzas/:id', async (req, res) => {
     }
 });
 
-var server = https.createServer(options, app).listen(port, () => {
+var server = app.listen(port, () => {
     console.log(`Server running on port ${port}`);
-})
+});
