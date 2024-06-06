@@ -31,6 +31,9 @@ app.get('/pizzas/:id', async (req, res) => {
     }
 });
 
+app.use(express.static('static'));
+
+
 var server = https.createServer(options, app).listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
