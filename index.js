@@ -7,8 +7,8 @@ import * as https from "node:https";
 import fs from "node:fs";
 
 const options = {
-    key: fs.readFileSync('/etc/letsencrypt/live/germand.tplinkdns.com/privkey.pem'),
-    cert: fs.readFileSync('/etc/letsencrypt/live/germand.tplinkdns.com/fullchain.pem')
+    key: fs.readFileSync('/etc/letsencrypt/live/fdiaznem.me/privkey.pem'),
+    cert: fs.readFileSync('/etc/letsencrypt/live/fdiaznem.me/fullchain.pem')
 };
 
 const app = express();
