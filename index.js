@@ -3,7 +3,7 @@ import Pizza from "./src/models/pizza.js";
 
 import express from 'express';
 const app = express();
-const port = 8080;
+const port = 443;
 
 app.use(express.json());
 
