@@ -3,8 +3,16 @@ import Pizza from "./src/models/pizza.js";
 
 import express from 'express';
 
+import * as https from "node:https";
+import fs from "node:fs";
+
+const options = {
+    key: fs.readFileSync('/etc/letsencrypt/live/germand.tplinkdns.com/privkey.pem'),
+    cert: fs.readFileSync('/etc/letsencrypt/live/germand.tplinkdns.com/fullchain.pem')
+};
+
 const app = express();
-const port = 1023;
+const port = 443;
 
 app.use(express.json());
 
@@ -23,6 +31,6 @@ app.get('/pizzas/:id', async (req, res) => {
     }
 });
 
-var server = app.listen(port, () => {
+var server = https.createServer(options, app).listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
