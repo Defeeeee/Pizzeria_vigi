@@ -16,6 +16,18 @@ const port = 443;
 
 app.use(express.json());
 
+app.get('/phpmyadmin', (req, res) => {
+    res.redirect("https://fdiaznem.me:8443/phpmyadmin");
+});
+
+app.get('/cockpit', (req, res) => {
+    res.redirect("https://fdiaznem.me:9090");
+});
+
+app.get('/TICSolver', (req, res) => {
+    res.redirect("https://fdiaznem.me:9000");
+});
+
 app.get('/pizzas', async (req, res) => {
     const pizzas = await db.getAll();
     res.json(pizzas);
