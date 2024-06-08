@@ -1,6 +1,8 @@
 import * as db from "./src/services/pizzas-services.js"
 import Pizza from "./src/models/pizza.js";
 
+import request from 'request';
+
 import express from 'express';
 
 import * as https from "node:https";
@@ -18,8 +20,11 @@ app.use(express.json());
 
 app.get('/phpmyadmin', (req, res) => {
     // res.redirect("https://fdiaznem.me:8443/phpmyadmin");
-    
-    res.send(fetch("https://fdiaznem.me:8443/phpmyadmin"))
+
+    request.get("https://fdiaznem.me:8443/phpmyadmin", function(err, response, body) {
+        if (!err) {
+            req.send(body);
+        }
 });
 
 app.get('/cockpit', (req, res) => {
