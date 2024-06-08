@@ -21,11 +21,11 @@ app.get('/phpmyadmin', (req, res) => {
 });
 
 app.get('/cockpit', (req, res) => {
-    res.redirect("https://fdiaznem.me:9090/ticsolver");
+    res.redirect("https://fdiaznem.me:9090");
 });
 
 app.get('/TICSolver', (req, res) => {
-    res.redirect("https://fdiaznem.me:9000");
+    res.redirect("https://fdiaznem.me:9000/ticsolver");
 });
 
 app.get('/pizzas', async (req, res) => {
