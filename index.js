@@ -21,7 +21,7 @@ app.get('/phpmyadmin', (req, res) => {
 });
 
 app.get('/cockpit', (req, res) => {
-    res.redirect("https://fdiaznem.me:9090");
+    res.redirect("https://fdiaznem.me:9090/ticsolver");
 });
 
 app.get('/TICSolver', (req, res) => {
