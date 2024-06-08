@@ -33,6 +33,10 @@ app.get('/pizzas', async (req, res) => {
     res.json(pizzas);
 });
 
+app.get('/', (req, res) => {
+    res.send("waaaaaaa");
+});
+
 app.get('/pizzas/:id', async (req, res) => {
     const id = req.params.id;
     const pizza = await db.getById(id);
