@@ -17,7 +17,9 @@ const port = 443;
 app.use(express.json());
 
 app.get('/phpmyadmin', (req, res) => {
-    res.redirect("https://fdiaznem.me:8443/phpmyadmin");
+    // res.redirect("https://fdiaznem.me:8443/phpmyadmin");
+    
+    res.send(fetch("https://fdiaznem.me:8443/phpmyadmin"))
 });
 
 app.get('/cockpit', (req, res) => {
