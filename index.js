@@ -21,10 +21,9 @@ app.use(express.json());
 app.get('/phpmyadmin', (req, res) => {
     // res.redirect("https://fdiaznem.me:8443/phpmyadmin");
 
-    request.get("https://fdiaznem.me:8443/phpmyadmin", function(err, response, body) {
-        if (!err) {
-            req.send(body);
-        }
+    request('https://fdiaznem.me:8443/phpmyadmin', function (error, response, body) {
+        res.send(body);
+    });
 });
 
 app.get('/cockpit', (req, res) => {
