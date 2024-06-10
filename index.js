@@ -24,8 +24,8 @@ app.get('/TICSolver', (req, res) => {
 
 // REST API, DB conn
 app.get('/pizzas', async (req, res) => {
-    const pizzas = await db.getAll();
-    res.json(pizzas);
+    const jose = await db.getAll();
+    res.json(jose);
 });
 
 app.get('/pizzas/:id', async (req, res) => {
@@ -39,8 +39,14 @@ app.get('/pizzas/:id', async (req, res) => {
 });
 
 app.get('/pizzas/insert/:data', async (req, res) => {
-    const data = JSON.parse(req.params.data);
-    const result = await db.insert(data);
+    const data = req.params.data.split(',');
+    const pizza = {
+        nombre: data[0],
+        libreGluten: data[1],
+        importe: data[2],
+        descripcion: data[3]
+    };
+    const result = await db.insert(pizza);
     res.json(result);
 });
 
@@ -48,3 +54,7 @@ app.get('/pizzas/insert/:data', async (req, res) => {
 https.createServer(options, app).listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
+
+// app.listen(port, () => {
+//     console.log(`Server running on port ${port}`);
+// });

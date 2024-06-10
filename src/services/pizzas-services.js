@@ -4,7 +4,7 @@ import {createPool} from "mysql2/promise"
 const connection  = createPool(config)
 
 export async function getAll() {
-    const [rows, _] = await connection.query('SELECT * FROM Pizza')
+    const [rows, _]  = await connection.query('SELECT * FROM Pizza')
     return rows
 }
 
