@@ -1,20 +1,15 @@
 import * as db from "./src/services/pizzas-services.js"
-
 import express from 'express';
-
 import * as https from "node:https";
-import fs from "node:fs";
+import options from "./sslConfig.js"
 
-const options = {
-    key: fs.readFileSync('/etc/letsencrypt/live/fdiaznem.me/privkey.pem'),
-    cert: fs.readFileSync('/etc/letsencrypt/live/fdiaznem.me/fullchain.pem')
-};
-
+// Express app creation
 const app = express();
 const port = 443;
 
 app.use(express.json());
 
+// Redirects to another ports/pages
 app.get('/phpmyadmin', (req, res) => {
     res.redirect("https://fdiaznem.me:8443/phpmyadmin");
 });
@@ -27,13 +22,10 @@ app.get('/TICSolver', (req, res) => {
     res.redirect("https://fdiaznem.me:9000/ticsolver");
 });
 
+// REST API, DB conn
 app.get('/pizzas', async (req, res) => {
     const pizzas = await db.getAll();
     res.json(pizzas);
-});
-
-app.get('/', (req, res) => {
-    res.send("waaaaaaa");
 });
 
 app.get('/pizzas/:id', async (req, res) => {
@@ -46,9 +38,7 @@ app.get('/pizzas/:id', async (req, res) => {
     }
 });
 
-app.use(express.static('static'));
-
-
-var server = https.createServer(options, app).listen(port, () => {
+// HTTPS server on port
+https.createServer(options, app).listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
