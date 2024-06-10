@@ -1,7 +1,4 @@
 import * as db from "./src/services/pizzas-services.js"
-import Pizza from "./src/models/pizza.js";
-
-import request from 'request';
 
 import express from 'express';
 
@@ -19,11 +16,7 @@ const port = 443;
 app.use(express.json());
 
 app.get('/phpmyadmin', (req, res) => {
-    // res.redirect("https://fdiaznem.me:8443/phpmyadmin");
-
-    request('https://fdiaznem.me:8443/phpmyadmin', function (error, response, body) {
-        res.send(body);
-    });
+    res.redirect("https://fdiaznem.me:8443/phpmyadmin");
 });
 
 app.get('/cockpit', (req, res) => {
