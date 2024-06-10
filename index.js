@@ -38,6 +38,12 @@ app.get('/pizzas/:id', async (req, res) => {
     }
 });
 
+app.get('/pizzas/insert/:data', async (req, res) => {
+    const data = JSON.parse(req.params.data);
+    const result = await db.insert(data);
+    res.json(result);
+});
+
 // HTTPS server on port
 https.createServer(options, app).listen(port, () => {
     console.log(`Server running on port ${port}`);
